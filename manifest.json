@@ -6,10 +6,26 @@
     "background": {
         "service_worker": "background.js"
     },
+    "host_permissions": ["https://etherscan.io/address/*"],
     "permissions": [
-        "storage",
         "tabs"
     ],
+    "content_scripts": [
+        {
+            "matches": [
+                "https://etherscan.io/address/*"
+            ],
+            "js": [
+                "content.js"
+            ]
+        }
+    ],
+    "web_accessible_resources": [
+        {
+          "resources": ["/images/nazar-16.png", "/images/nazar-32.png"],
+          "matches": ["<all_urls>"]
+        }
+      ],
     "action": {
         "default_popup": "popup.html",
         "default_icon": {
